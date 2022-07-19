@@ -9,6 +9,7 @@ class Meta(type):
         attributes["class_number"] = cls.class_number
         # Here we could add some helper methods or attributes to c
         c = type(class_name, parents, attributes)
+        cls.children_number += 1
         return c
 
 
@@ -28,3 +29,4 @@ class Cls2(metaclass=Meta):
 assert (Cls1.class_number, Cls2.class_number) == (0, 1)
 a, b = Cls1('a'), Cls2('b')
 assert (a.class_number, b.class_number) == (0, 1)
+print(Meta.children_number)
